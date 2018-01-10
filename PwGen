@@ -1,0 +1,96 @@
+package Generator;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import java.awt.Font;
+import javax.swing.JCheckBox;
+import javax.swing.JTextPane;
+import javax.swing.JSpinner;
+import javax.swing.JButton;
+import javax.swing.JSlider;
+
+public class PwGen extends JFrame {
+	public PwGen() {
+		setLookAndFeel();
+		this.setSize(400,600);
+		this.setVisible(true);
+		
+		getContentPane().setLayout(null);
+		
+		JLabel title = new JLabel("Password Generator");
+		title.setFont(new Font("Tahoma", Font.PLAIN, 31));
+		title.setVerticalAlignment(SwingConstants.TOP);
+		title.setBounds(57, 11, 274, 38);
+		getContentPane().add(title);
+		//Creates the checkbox that includes symbols
+		JCheckBox SymbolCheck = new JCheckBox("Include Symbols in Passwords?:");
+		SymbolCheck.setBounds(18, 79, 183, 23);
+		SymbolCheck.setHorizontalTextPosition(SwingConstants.LEFT);
+		getContentPane().add(SymbolCheck);
+		//Creates the checkbox that includes capitals
+		JCheckBox CapitalCheck = new JCheckBox("Include Capital Letters In Passwords?:");
+		CapitalCheck.setBounds(18, 122, 215, 23);
+		CapitalCheck.setHorizontalTextPosition(SwingConstants.LEFT);
+		getContentPane().add(CapitalCheck);
+		//Creates the checkbox that includes numbers
+		JCheckBox NumbersCheck = new JCheckBox("Include Numbers in Passwords?:");
+		NumbersCheck.setBounds(18, 161, 183, 23);
+		NumbersCheck.setHorizontalTextPosition(SwingConstants.LEFT);
+		getContentPane().add(NumbersCheck);
+		//Decides the number of passwords to be generated
+		JTextPane NumberCount = new JTextPane();
+		NumberCount.setEditable(false);
+		NumberCount.setText("Number of Generated Passwords?:");
+		NumberCount.setBounds(18, 197, 183, 20);
+		NumberCount.setOpaque(false);
+		getContentPane().add(NumberCount);
+		//Spinner for amount of pws to be generated
+		JSpinner spinner = new JSpinner();
+		spinner.setBounds(192, 197, 29, 20);
+		spinner.setValue(4);
+		getContentPane().add(spinner);
+		//Button that generates the password
+		JButton GenerateBtn = new JButton("Generate Password");
+		GenerateBtn.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		GenerateBtn.setBounds(10, 249, 364, 70);
+		getContentPane().add(GenerateBtn);
+		//Output header
+		JTextPane OutputLabel = new JTextPane();
+		OutputLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		OutputLabel.setEditable(false);
+		OutputLabel.setText("Output:");
+		OutputLabel.setBounds(10, 249, 364, 70);
+		OutputLabel.setOpaque(false);
+		getContentPane().add(OutputLabel);
+		//Text pane for output
+		JTextPane OutputText = new JTextPane();
+		OutputText.setEditable(false);
+		OutputText.setText("edghdgsdg");
+		OutputText.setBounds(10, 352, 364, 102);
+		getContentPane().add(OutputText);
+		
+		
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new PwGen();
+		Storage store = new Storage();
+		setLookAndFeel();
+	}
+	
+	private static void setLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e) {
+		}
+	}
+}
