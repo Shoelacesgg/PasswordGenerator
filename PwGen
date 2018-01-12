@@ -20,6 +20,8 @@ import java.awt.event.ActionListener;
 
 public class PwGen extends JFrame implements ActionListener{
 	JButton BankBtn;
+	JButton GenerateBtn;
+	Storage store = new Storage();
 	public PwGen() {
 		setLookAndFeel();
 		
@@ -61,7 +63,9 @@ public class PwGen extends JFrame implements ActionListener{
 		//Button that generates the password
 		JButton GenerateBtn = new JButton("Generate Password");
 		GenerateBtn.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		GenerateBtn.addActionListener(this);
 		GenerateBtn.setBounds(10, 249, 364, 70);
+		GenerateBtn.addActionListener(this);
 		getContentPane().add(GenerateBtn);
 		//Output header
 		JTextPane OutputLabel = new JTextPane();
@@ -80,6 +84,7 @@ public class PwGen extends JFrame implements ActionListener{
 		//Button for the password bank
 		BankBtn = new JButton("Password Bank");
 		BankBtn.setBounds(243, 520, 131, 31);
+		BankBtn.addActionListener(this);
 		getContentPane().add(BankBtn);
 
 		pack();
@@ -93,23 +98,11 @@ public class PwGen extends JFrame implements ActionListener{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new PwGen();
-		Storage store = new Storage();
+		//Storage store = new Storage();
 		//store.setVisible(true);
 		setLookAndFeel();
 	}
-/*	
-	BankBtn.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent event) {
-			toggled = enabled.isSelected();
-			if (toggled) {
-				store.setVisible(true);
-				System.out.println("True set to visible");
-			}
-		}
-	});
-	*/
+	
 	private static void setLookAndFeel() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -121,8 +114,10 @@ public class PwGen extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		if(BankBtn.getModel().isPressed()) {
-	
-		}
+		System.out.println("idek at this point");
+		store.setVisible(true);
+		
+		
 	}
+
 }
