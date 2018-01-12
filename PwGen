@@ -13,11 +13,16 @@ import javax.swing.JSpinner;
 import javax.swing.JButton;
 import javax.swing.JSlider;
 
-public class PwGen extends JFrame {
+
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class PwGen extends JFrame implements ActionListener{
+	JButton BankBtn;
 	public PwGen() {
 		setLookAndFeel();
-		this.setSize(400,600);
-		this.setVisible(true);
+		
 		
 		getContentPane().setLayout(null);
 		
@@ -72,8 +77,14 @@ public class PwGen extends JFrame {
 		OutputText.setText("edghdgsdg");
 		OutputText.setBounds(10, 352, 364, 102);
 		getContentPane().add(OutputText);
-		
-		
+		//Button for the password bank
+		BankBtn = new JButton("Password Bank");
+		BankBtn.setBounds(243, 520, 131, 31);
+		getContentPane().add(BankBtn);
+
+		pack();
+		this.setSize(400,600);
+		this.setVisible(true);
 		
 		
 		
@@ -83,14 +94,35 @@ public class PwGen extends JFrame {
 		// TODO Auto-generated method stub
 		new PwGen();
 		Storage store = new Storage();
+		//store.setVisible(true);
 		setLookAndFeel();
 	}
-	
+/*	
+	BankBtn.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			toggled = enabled.isSelected();
+			if (toggled) {
+				store.setVisible(true);
+				System.out.println("True set to visible");
+			}
+		}
+	});
+	*/
 	private static void setLookAndFeel() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException e) {
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		if(BankBtn.getModel().isPressed()) {
+	
 		}
 	}
 }
