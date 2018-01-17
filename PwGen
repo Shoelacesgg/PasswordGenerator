@@ -28,6 +28,7 @@ public class PwGen extends JFrame implements ActionListener{
 		setLookAndFeel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		//Creates the "Password Generator" Title
 		
 		getContentPane().setLayout(null);
 		JLabel title = new JLabel("Password Generator");
@@ -75,11 +76,10 @@ public class PwGen extends JFrame implements ActionListener{
 		
 		//Button that generates the password
 		
-		JButton GenerateBtn = new JButton("Generate Password");
+		GenerateBtn = new JButton("Generate Password");
 		GenerateBtn.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GenerateBtn.addActionListener(this);
 		GenerateBtn.setBounds(10, 249, 364, 70);
-		GenerateBtn.addActionListener(this);
 		getContentPane().add(GenerateBtn);
 		
 		//Output header
@@ -132,35 +132,38 @@ public class PwGen extends JFrame implements ActionListener{
 	}
 	
 	public void randomLowerNumber() { 
-		Random ran = new Random();
-		char atoz = (char) (ran.nextInt('z' - 'a') + 'a');
+		Random lower = new Random();
+		char atoz = (char) (lower.nextInt('z' - 'a') + 'a');
 		System.out.println(atoz);
 	}
 	
 	public void randomUpperNumber() { 
-		Random ra1n = new Random();
-		char ltoz = (char) (ra1n.nextInt('Z' - 'A') + 'A');
-		System.out.println(ltoz);
+		Random upper = new Random();
+		char AtoZ = (char) (upper.nextInt('Z' - 'A') + 'A');
+		System.out.println(AtoZ);
+	}
+	
+	public void generatePassword() {
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		//String arg = (String)arg0.getActionCommand();
+	
 		if (arg0.getActionCommand().equals("Generate Password"))	{
-			System.out.println("nibba BOOOONEES");
+			System.out.println("Gen PW Clicked");
+			randomLowerNumber();
+			randomUpperNumber();
 		}
 		
 		if (arg0.getActionCommand().equals("Password Bank")) {
-			System.out.println("I woulda launched nigga");
+			System.out.println("Password Bank Clciked");
+			store.setVisible(true);
 		}
 			
 		
-		//System.out.println("idek at this point");
-		//store.setVisible(true);
-		//randomLowerNumber();
-		//randomUpperNumber();
-		
+	
 		
 	}
 
