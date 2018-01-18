@@ -14,9 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JSlider;
 
 import java.util.Random;
-
-
-
+import java.util.concurrent.ThreadLocalRandom;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,6 +22,7 @@ public class PwGen extends JFrame implements ActionListener{
 	JButton BankBtn;
 	JButton GenerateBtn;
 	Storage store = new Storage();
+	int numGenerate = 0;
 	public PwGen() {
 		setLookAndFeel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,6 +72,7 @@ public class PwGen extends JFrame implements ActionListener{
 		spinner.setBounds(192, 197, 29, 20);
 		spinner.setValue(4);
 		getContentPane().add(spinner);
+		numGenerate = (int) spinner.getValue();
 		
 		//Button that generates the password
 		
@@ -131,20 +131,75 @@ public class PwGen extends JFrame implements ActionListener{
 		}
 	}
 	
-	public void randomLowerNumber() { 
+	//This grabs a random lower case letter for the password.
+	
+	public void randomLowerLetter() { 
 		Random lower = new Random();
 		char atoz = (char) (lower.nextInt('z' - 'a') + 'a');
-		System.out.println(atoz);
+		System.out.print(atoz);
 	}
 	
-	public void randomUpperNumber() { 
+	//This grabs a random upper case letter for the password.
+	
+	public void randomUpperLetter() { 
 		Random upper = new Random();
 		char AtoZ = (char) (upper.nextInt('Z' - 'A') + 'A');
-		System.out.println(AtoZ);
+		System.out.print(AtoZ);
 	}
+	
+	//This grabs a random symbol for the password.
+	
+	public void randomSymbol() {
+		Random symRan = new Random();
+		int sym = 0;
+		sym = ThreadLocalRandom.current().nextInt(0, 7);
+		if (sym == 0) {
+			System.out.print("!");
+		} else if (sym == 1){
+			System.out.print("@");
+		} else if (sym == 2){
+			System.out.print("#");
+		} else if (sym == 3){
+			System.out.print("$");
+		} else if (sym == 4){
+			System.out.print("%");
+		} else if (sym == 5){
+			System.out.print("^");
+		} else if (sym == 6){
+			System.out.print("&");
+		} else if (sym == 7){
+			System.out.print("*");
+		} else {
+			System.out.print("&");
+		}
+	}
+	
+	//This grabs a random number for the password.
+	
+	public void randomNumber() {
+		Random number = new Random();
+		int num = 0;
+		num = ThreadLocalRandom.current().nextInt(0, 7);
+		System.out.print(num);
+		
+	}
+	
+	//Executes all the methods that factor into the password and puts them together
 	
 	public void generatePassword() {
 		
+		for (int i = 0; i< numGenerate + 1; i++) {
+			randomLowerLetter();
+			randomUpperLetter();
+			randomSymbol();
+			randomNumber();
+			System.out.println("");
+		}
+		
+		//randomLowerLetter();
+		//randomUpperLetter();
+		//randomSymbol();
+		//randomNumber();
 	}
 
 	@Override
@@ -153,8 +208,7 @@ public class PwGen extends JFrame implements ActionListener{
 	
 		if (arg0.getActionCommand().equals("Generate Password"))	{
 			System.out.println("Gen PW Clicked");
-			randomLowerNumber();
-			randomUpperNumber();
+			generatePassword();
 		}
 		
 		if (arg0.getActionCommand().equals("Password Bank")) {
