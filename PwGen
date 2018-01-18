@@ -17,6 +17,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.SpinnerNumberModel;
 
 public class PwGen extends JFrame implements ActionListener{
 	JButton BankBtn;
@@ -26,6 +27,7 @@ public class PwGen extends JFrame implements ActionListener{
 	JCheckBox NumbersCheck;
 	JCheckBox CapitalCheck;
 	Storage store = new Storage();
+	JTextPane OutputText;
 	int numGenerate = 0;
 	private JTextPane OptionsLabel;
 	public PwGen() {
@@ -74,6 +76,7 @@ public class PwGen extends JFrame implements ActionListener{
 		//Spinner for amount of pws to be generated
 		
 		spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(4, 0, 10, 1));
 		spinner.setBounds(193, 197, 29, 20);
 		spinner.setValue(4);
 		getContentPane().add(spinner);
@@ -99,7 +102,7 @@ public class PwGen extends JFrame implements ActionListener{
 		
 		//Text pane for output
 		
-		JTextPane OutputText = new JTextPane();
+		OutputText = new JTextPane();
 		OutputText.setEditable(false);
 		OutputText.setText("edghdgsdg");
 		OutputText.setBounds(10, 352, 364, 102);
@@ -209,17 +212,62 @@ public class PwGen extends JFrame implements ActionListener{
 	public void passwordAlgorithm() {
 		Random algorithmChoice = new Random();
 		int choice = 0;
-		choice = ThreadLocalRandom.current().nextInt(0, 9);
+		choice = ThreadLocalRandom.current().nextInt(0, 12);
 		if (choice == 0) {
-			
+			randomLowerLetter();
+			randomUpperLetter();
+			randomSymbol();
+			randomNumber();
+			randomUpperLetter();
+			randomSymbol();
+			randomLowerLetter();
+			randomNumber();
+			randomLowerLetter();
+			randomLowerLetter();
 		} else if (choice == 1) {
-			
+			randomUpperLetter();
+			randomLowerLetter();
+			randomSymbol();
+			randomNumber();
+			randomNumber();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomSymbol();
+			randomUpperLetter();
+			randomLowerLetter();
 		} else if (choice == 2) {
-		
+			randomSymbol();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomNumber();
+			randomUpperLetter();
+			randomSymbol();
+			randomLowerLetter();
+			randomNumber();
 		} else if (choice == 3) {
-			
+			randomNumber();
+			randomSymbol();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomSymbol();
+			randomUpperLetter();
+			randomNumber();
+			randomLowerLetter();
+			randomUpperLetter();
 		} else if (choice == 4) {
-			
+			randomLowerLetter();
+			randomSymbol();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomNumber();
+			randomUpperLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomSymbol();
+			randomNumber();
 		} else if (choice == 5) {
 			
 		} else if (choice == 6) {
@@ -230,10 +278,20 @@ public class PwGen extends JFrame implements ActionListener{
 		
 		} else if (choice == 9) {
 			
+		} else if (choice == 10) {
+			
+		} else if (choice == 11) {
+			
+		} else if (choice == 12) {
+			
 		} else {
-			System.out.print("&");
+			
 		}
+		
+
 	}
+	
+	
 	
 	//Executes all the methods that factor into the password and puts them together
 	
@@ -244,6 +302,7 @@ public class PwGen extends JFrame implements ActionListener{
 			randomUpperLetter();
 			randomSymbol();
 			randomNumber();
+			passwordAlgorithm();
 			System.out.println("");
 		}
 		
@@ -252,6 +311,12 @@ public class PwGen extends JFrame implements ActionListener{
 		//randomSymbol();
 		//randomNumber();
 	}
+	
+	//Set the text in the output text box
+	
+		public void setText() {
+			//OutputText.set;
+		}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
