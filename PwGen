@@ -120,9 +120,9 @@ public class PwGen extends JFrame implements ActionListener{
 		OptionsLabel.setOpaque(false);
 		getContentPane().add(OptionsLabel);
 
-		//pack();
-		//this.setSize(400,600);
-		//this.setVisible(true);
+		pack();
+		this.setSize(400,600);
+		this.setVisible(true);
 		
 		
 		
@@ -189,27 +189,7 @@ public class PwGen extends JFrame implements ActionListener{
 			} else {
 				System.out.print("&");
 			}
-		} /*
-		if (sym == 0) {
-			System.out.print("!");
-		} else if (sym == 1){
-			System.out.print("@");
-		} else if (sym == 2){
-			System.out.print("#");
-		} else if (sym == 3){
-			System.out.print("$");
-		} else if (sym == 4){
-			System.out.print("%");
-		} else if (sym == 5){
-			System.out.print("^");
-		} else if (sym == 6){
-			System.out.print("&");
-		} else if (sym == 7){
-			System.out.print("*");
-		} else {
-			System.out.print("&");
-		}
-		*/
+		} 
 	}
 	
 	//This grabs a random number for the password.
@@ -222,6 +202,37 @@ public class PwGen extends JFrame implements ActionListener{
 			System.out.print(num);
 		}
 		
+	}
+	
+	//Creates the algorithms for individual passwords.
+	
+	public void passwordAlgorithm() {
+		Random algorithmChoice = new Random();
+		int choice = 0;
+		choice = ThreadLocalRandom.current().nextInt(0, 9);
+		if (choice == 0) {
+			
+		} else if (choice == 1) {
+			
+		} else if (choice == 2) {
+		
+		} else if (choice == 3) {
+			
+		} else if (choice == 4) {
+			
+		} else if (choice == 5) {
+			
+		} else if (choice == 6) {
+			
+		} else if (choice == 7) {
+		
+		} else if (choice == 8) {
+		
+		} else if (choice == 9) {
+			
+		} else {
+			System.out.print("&");
+		}
 	}
 	
 	//Executes all the methods that factor into the password and puts them together
