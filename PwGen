@@ -21,8 +21,13 @@ import java.awt.event.ActionListener;
 public class PwGen extends JFrame implements ActionListener{
 	JButton BankBtn;
 	JButton GenerateBtn;
+	JSpinner spinner;
+	JCheckBox SymbolCheck;
+	JCheckBox NumbersCheck;
+	JCheckBox CapitalCheck;
 	Storage store = new Storage();
 	int numGenerate = 0;
+	private JTextPane OptionsLabel;
 	public PwGen() {
 		setLookAndFeel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,22 +43,22 @@ public class PwGen extends JFrame implements ActionListener{
 		
 		//Creates the checkbooks that includes symbols
 		
-		JCheckBox SymbolCheck = new JCheckBox("Include Symbols in Passwords?:");
-		SymbolCheck.setBounds(18, 79, 183, 23);
+		SymbolCheck = new JCheckBox("Include Symbols in Passwords?:");
+		SymbolCheck.setBounds(18, 107, 183, 23);
 		SymbolCheck.setHorizontalTextPosition(SwingConstants.LEFT);
 		getContentPane().add(SymbolCheck);
 		
 		//Creates the checkbox that includes capitals
 		
-		JCheckBox CapitalCheck = new JCheckBox("Include Capital Letters In Passwords?:");
-		CapitalCheck.setBounds(18, 122, 215, 23);
+		CapitalCheck = new JCheckBox("Include Capital Letters In Passwords?:");
+		CapitalCheck.setBounds(18, 133, 215, 31);
 		CapitalCheck.setHorizontalTextPosition(SwingConstants.LEFT);
 		getContentPane().add(CapitalCheck);
 		
 		//Creates the checkbox that includes numbers
 		
-		JCheckBox NumbersCheck = new JCheckBox("Include Numbers in Passwords?:");
-		NumbersCheck.setBounds(18, 161, 183, 23);
+		NumbersCheck = new JCheckBox("Include Numbers in Passwords?:");
+		NumbersCheck.setBounds(18, 167, 183, 23);
 		NumbersCheck.setHorizontalTextPosition(SwingConstants.LEFT);
 		getContentPane().add(NumbersCheck);
 		
@@ -68,8 +73,8 @@ public class PwGen extends JFrame implements ActionListener{
 		
 		//Spinner for amount of pws to be generated
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(192, 197, 29, 20);
+		spinner = new JSpinner();
+		spinner.setBounds(193, 197, 29, 20);
 		spinner.setValue(4);
 		getContentPane().add(spinner);
 		numGenerate = (int) spinner.getValue();
@@ -79,7 +84,7 @@ public class PwGen extends JFrame implements ActionListener{
 		GenerateBtn = new JButton("Generate Password");
 		GenerateBtn.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GenerateBtn.addActionListener(this);
-		GenerateBtn.setBounds(10, 249, 364, 70);
+		GenerateBtn.setBounds(10, 254, 364, 70);
 		getContentPane().add(GenerateBtn);
 		
 		//Output header
@@ -88,7 +93,7 @@ public class PwGen extends JFrame implements ActionListener{
 		OutputLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		OutputLabel.setEditable(false);
 		OutputLabel.setText("Output:");
-		OutputLabel.setBounds(10, 249, 364, 70);
+		OutputLabel.setBounds(18, 228, 364, 70);
 		OutputLabel.setOpaque(false);
 		getContentPane().add(OutputLabel);
 		
@@ -106,10 +111,18 @@ public class PwGen extends JFrame implements ActionListener{
 		BankBtn.setBounds(243, 520, 131, 31);
 		BankBtn.addActionListener(this);
 		getContentPane().add(BankBtn);
+		
+		OptionsLabel = new JTextPane();
+		OptionsLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		OptionsLabel.setEditable(false);
+		OptionsLabel.setText("Options:");
+		OptionsLabel.setBounds(18, 80, 54, 20);
+		OptionsLabel.setOpaque(false);
+		getContentPane().add(OptionsLabel);
 
-		pack();
-		this.setSize(400,600);
-		this.setVisible(true);
+		//pack();
+		//this.setSize(400,600);
+		//this.setVisible(true);
 		
 		
 		
@@ -142,9 +155,12 @@ public class PwGen extends JFrame implements ActionListener{
 	//This grabs a random upper case letter for the password.
 	
 	public void randomUpperLetter() { 
+		
 		Random upper = new Random();
 		char AtoZ = (char) (upper.nextInt('Z' - 'A') + 'A');
-		System.out.print(AtoZ);
+		if (CapitalCheck.isSelected()) {
+			System.out.print(AtoZ);
+		}
 	}
 	
 	//This grabs a random symbol for the password.
@@ -153,6 +169,27 @@ public class PwGen extends JFrame implements ActionListener{
 		Random symRan = new Random();
 		int sym = 0;
 		sym = ThreadLocalRandom.current().nextInt(0, 7);
+		if (SymbolCheck.isSelected()) {
+			if (sym == 0) {
+				System.out.print("!");
+			} else if (sym == 1){
+				System.out.print("@");
+			} else if (sym == 2){
+				System.out.print("#");
+			} else if (sym == 3){
+				System.out.print("$");
+			} else if (sym == 4){
+				System.out.print("%");
+			} else if (sym == 5){
+				System.out.print("^");
+			} else if (sym == 6){
+				System.out.print("&");
+			} else if (sym == 7){
+				System.out.print("*");
+			} else {
+				System.out.print("&");
+			}
+		} /*
 		if (sym == 0) {
 			System.out.print("!");
 		} else if (sym == 1){
@@ -172,6 +209,7 @@ public class PwGen extends JFrame implements ActionListener{
 		} else {
 			System.out.print("&");
 		}
+		*/
 	}
 	
 	//This grabs a random number for the password.
@@ -180,7 +218,9 @@ public class PwGen extends JFrame implements ActionListener{
 		Random number = new Random();
 		int num = 0;
 		num = ThreadLocalRandom.current().nextInt(0, 7);
-		System.out.print(num);
+		if (NumbersCheck.isSelected()) {
+			System.out.print(num);
+		}
 		
 	}
 	
@@ -188,7 +228,7 @@ public class PwGen extends JFrame implements ActionListener{
 	
 	public void generatePassword() {
 		
-		for (int i = 0; i< numGenerate + 1; i++) {
+		for (int i = 0; i< numGenerate; i++) {
 			randomLowerLetter();
 			randomUpperLetter();
 			randomSymbol();
@@ -208,6 +248,8 @@ public class PwGen extends JFrame implements ActionListener{
 	
 		if (arg0.getActionCommand().equals("Generate Password"))	{
 			System.out.println("Gen PW Clicked");
+			numGenerate = (int) spinner.getValue();
+			System.out.println(numGenerate);
 			generatePassword();
 		}
 		
