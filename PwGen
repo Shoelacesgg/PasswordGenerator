@@ -55,6 +55,7 @@ public class PwGen extends JFrame implements ActionListener{
 		CapitalCheck = new JCheckBox("Include Capital Letters In Passwords?:");
 		CapitalCheck.setBounds(18, 133, 215, 31);
 		CapitalCheck.setHorizontalTextPosition(SwingConstants.LEFT);
+		CapitalCheck.setSelected(true);
 		getContentPane().add(CapitalCheck);
 		
 		//Creates the checkbox that includes numbers
@@ -62,6 +63,7 @@ public class PwGen extends JFrame implements ActionListener{
 		NumbersCheck = new JCheckBox("Include Numbers in Passwords?:");
 		NumbersCheck.setBounds(18, 167, 183, 23);
 		NumbersCheck.setHorizontalTextPosition(SwingConstants.LEFT);
+		NumbersCheck.setSelected(true);
 		getContentPane().add(NumbersCheck);
 		
 		//Decides the number of passwords to be generated
@@ -215,8 +217,11 @@ public class PwGen extends JFrame implements ActionListener{
 		choice = ThreadLocalRandom.current().nextInt(0, 12);
 		if (choice == 0) {
 			randomLowerLetter();
+			randomLowerLetter();
 			randomUpperLetter();
 			randomSymbol();
+			randomLowerLetter();
+			randomLowerLetter();
 			randomNumber();
 			randomUpperLetter();
 			randomSymbol();
@@ -224,15 +229,20 @@ public class PwGen extends JFrame implements ActionListener{
 			randomNumber();
 			randomLowerLetter();
 			randomLowerLetter();
+			randomNumber();
 		} else if (choice == 1) {
 			randomUpperLetter();
+			randomSymbol();
 			randomLowerLetter();
 			randomSymbol();
 			randomNumber();
 			randomNumber();
 			randomUpperLetter();
+			randomUpperLetter();
 			randomLowerLetter();
 			randomSymbol();
+			randomUpperLetter();
+			randomLowerLetter();
 			randomUpperLetter();
 			randomLowerLetter();
 		} else if (choice == 2) {
@@ -243,12 +253,19 @@ public class PwGen extends JFrame implements ActionListener{
 			randomLowerLetter();
 			randomNumber();
 			randomUpperLetter();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomSymbol();
+			randomLowerLetter();
 			randomSymbol();
 			randomLowerLetter();
 			randomNumber();
 		} else if (choice == 3) {
 			randomNumber();
+			randomLowerLetter();
 			randomSymbol();
+			randomUpperLetter();
+			randomNumber();
 			randomLowerLetter();
 			randomUpperLetter();
 			randomLowerLetter();
@@ -257,6 +274,7 @@ public class PwGen extends JFrame implements ActionListener{
 			randomNumber();
 			randomLowerLetter();
 			randomUpperLetter();
+			randomLowerLetter();
 		} else if (choice == 4) {
 			randomLowerLetter();
 			randomSymbol();
@@ -264,31 +282,121 @@ public class PwGen extends JFrame implements ActionListener{
 			randomLowerLetter();
 			randomNumber();
 			randomUpperLetter();
+			randomLowerLetter();
+			randomSymbol();
 			randomUpperLetter();
 			randomLowerLetter();
 			randomSymbol();
 			randomNumber();
+			randomNumber();
+			randomUpperLetter();
 		} else if (choice == 5) {
-			
+			randomUpperLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomSymbol();
+			randomNumber();
+			randomLowerLetter();
+			randomLowerLetter();
+			randomSymbol();
+			randomSymbol();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomNumber();
+			randomLowerLetter();
+			randomNumber();
 		} else if (choice == 6) {
-			
+			randomLowerLetter(); 
+			randomUpperLetter();
+			randomUpperLetter();
+			randomSymbol();
+			randomLowerLetter(); 
+			randomUpperLetter();
+			randomNumber();
+			randomNumber();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomNumber();
+			randomUpperLetter();
+			randomNumber();
 		} else if (choice == 7) {
-		
+			randomUpperLetter();
+			randomNumber();
+			randomSymbol();
+			randomUpperLetter();
+			randomNumber();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomNumber();
+			randomNumber();
+			randomUpperLetter();
+			randomLowerLetter();
 		} else if (choice == 8) {
-		
+			randomNumber();
+			randomNumber();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomSymbol();
+			randomUpperLetter();
+			randomNumber();
+			randomLowerLetter();
+			randomLowerLetter();
+			randomNumber();
+			randomSymbol();
+			randomUpperLetter();
+			randomUpperLetter();
+			randomUpperLetter();
 		} else if (choice == 9) {
-			
+			randomLowerLetter();
+			randomSymbol();
+			randomLowerLetter();
+			randomLowerLetter();
+			randomSymbol();
+			randomUpperLetter();
+			randomNumber();
+			randomSymbol();
+			randomUpperLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomSymbol();
 		} else if (choice == 10) {
-			
-		} else if (choice == 11) {
-			
-		} else if (choice == 12) {
-			
+			randomUpperLetter();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomSymbol();
+			randomNumber();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomUpperLetter();
+			randomSymbol();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomNumber();
+			randomLowerLetter();
+			randomUpperLetter();
 		} else {
-			
+			randomUpperLetter();
+			randomNumber();
+			randomSymbol();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomSymbol();
+			randomLowerLetter();
+			randomUpperLetter();
+			randomLowerLetter();
+			randomLowerLetter();
+			randomLowerLetter();
+			randomSymbol();
 		}
 		
-
 	}
 	
 	
@@ -298,10 +406,10 @@ public class PwGen extends JFrame implements ActionListener{
 	public void generatePassword() {
 		
 		for (int i = 0; i< numGenerate; i++) {
-			randomLowerLetter();
-			randomUpperLetter();
-			randomSymbol();
-			randomNumber();
+			//randomLowerLetter();
+			//randomUpperLetter();
+			//randomSymbol();
+			//randomNumber();
 			passwordAlgorithm();
 			System.out.println("");
 		}
